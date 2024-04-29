@@ -1,0 +1,15 @@
+<div class="card">
+<div class="card-body">
+<form [formGroup]="loginForm" (ngSubmit)="connexion()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Identifiant</label>
+      <input placeholder="identifiant" type="text" class="form-control" id="username" name="username" formControlName="username">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Mot de Passe</label>
+      <input placeholder="motdepasse" type="password" class="form-control" id="password" name="password" formControlName="password">
+    </div>
+    <button type="submit" [disabled]="usernameCtrl.pristine || passwordCtrl.pristine" class="btn btn-primary">Se Connecter</button>
+</form>
+</div>
+</div>
