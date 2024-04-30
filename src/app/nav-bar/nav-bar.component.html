@@ -1,0 +1,46 @@
+<ul class="nav nav-pills mt-3">
+    <li class="nav-item" >
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Accueil</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"  [routerLink]="['/menu']" routerLinkActive="active">Menu</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="isLogged()" [routerLink]="['/connection']" routerLinkActive="active">Connection</a>
+        <i class="bi bi-person"></i>
+
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link"  [routerLink]="['/accueil']" routerLinkActive="active">Accueil</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/menu']" routerLinkActive="active">Menu</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/accueil']" routerLinkActive="active">Accueil</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/menu']" routerLinkActive="active">Menu</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/commande']" routerLinkActive="active">Commande</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/historique']" routerLinkActive="active">Historique</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/bienvenu Jordan']" routerLinkActive="active">Bienvenu Jordan </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/inscription']" routerLinkActive="active">Inscription</a>
+    </li>
+    <li class="nav-item" *ngIf="isLogged()">
+        <button class="nav-link" (click)="logout()">Déconnexion</button>
+    </li>
+    <li class="nav-item">
+        <span>{{showUtilisateur()}}</span>
+    </li>
+</ul>
+
