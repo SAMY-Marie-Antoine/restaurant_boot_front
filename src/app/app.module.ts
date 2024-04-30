@@ -9,9 +9,13 @@ import { ProduitComponent } from './produit/produit.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { PanierComponent } from './panier/panier.component';
+import { CommandeProduitComponent } from './commande-produit/commande-produit.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { DebutCommandeComponent } from './debut-commande/debut-commande.component';
+import { CompositionMenuComponent } from './composition-menu/composition-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, AjouterProduitComponent, ProduitComponent, LoginComponent, SignUpComponent, PanierComponent],
+  declarations: [AppComponent, AjouterProduitComponent, ProduitComponent, LoginComponent, SignUpComponent, CommandeProduitComponent, NavBarComponent, DebutCommandeComponent, PanierComponent, CompositionMenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Formule } from '../../model';
-import { Produit, typeProduit } from '../model';
+import { Formule } from '../model';
+import { Produit} from '../model';
 import { ProduitHttpService } from '../produit/produit-http.service';
+import { FormuleHttpService } from '../formule-http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'composition-menu',
@@ -10,28 +12,37 @@ import { ProduitHttpService } from '../produit/produit-http.service';
 })
 export class CompositionMenuComponent {
 
-  public produits! : Array<Produit>;
-  public formule1:Formule = new Formule(1,"Formule1",25,[typeProduit.entree,typeProduit.plat,typeProduit.dessert]);
+  public formuleChoisie? : Formule;
+  public composition : boolean = false;
+  public entree:boolean = false;
+  public plat:boolean = false;
+  public dessert:boolean = false;
+  public boisson:boolean = false;
 
-  constructor(produitSrv : ProduitHttpService){
-    this.produits = produitSrv.findAll();
+  constructor(private produitSrv : ProduitHttpService, private formuleSrv : FormuleHttpService, private router: Router){
   }
 
-  listeProduitsConcernes(formule:Formule){
-    let entree:boolean = formule.typeProduits?.includes(typeProduit.entree);
-    let plat:boolean = formule.typeProduits?.includes(typeProduit.plat);
-    let dessert:boolean = formule.typeProduits?.includes(typeProduit.dessert);
-    let boisson:boolean = formule.typeProduits?.includes(typeProduit.boisson);
+  list(){
+    return this.formuleSrv.findAll();
+  }
 
-    this.produits.filter(prod => prod.dansFormule && prod)
-    //Recevoir la formule choisie
-    //Afficher les bonnes catégories entre entree, plat et dessert et eligibles à la formule
-    //Laisser l'utilisateur choisir seulement les produits correspondants
+  selectFormule(formule : Formule){
+    this.formuleChoisie = formule;
+    this.composition = true;
+  }
+  checkProduitsConcernes(){
+    if(this.formuleChoisie && this.formuleChoisie.typeProduits){
+      this.entree = this.formuleChoisie.typeProduits.includes("entree");
+      this.plat = this.formuleChoisie.typeProduits.includes("plat");
+      this.dessert = this.formuleChoisie.typeProduits.includes("dessert");
+      this.boisson = this.formuleChoisie.typeProduits.includes("boisson");
+    }
+   
+    //this.produits.filter(prod => prod.dansFormule && prod)
   }
 
   save(){
-  //Recevoir le client
-  //Recevoir la commande
   //Creer un objet detailCommande
+  //L'ajouter avec CommandeSrv
   }
 }

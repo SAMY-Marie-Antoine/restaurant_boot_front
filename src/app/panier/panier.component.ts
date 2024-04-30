@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { DetailCommandeService } from '../detail-commande.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DetailCommande } from '../model';
+import { CommandeHttpService } from '../commande-http.service';
 
 @Component({
   selector: 'app-panier',
@@ -12,47 +13,40 @@ export class PanierComponent {
   detailCommande?: DetailCommande = undefined;
   ajout: boolean = false;
 
-  constructor(
-    private detailCommandeHttpService: DetailCommandeService,
-    private commandeHttpService: CommandeService,
-    private route: ActivatedRoute
-  ) {
-    this.route.params.subscribe((params) => {
-      if (params['mode'] == 'add') {
-        this.detailCommande = new DetailCommande();
-      }
-    });
+  constructor(private cmdService: CommandeHttpService, private router :  Router) {
+   
   }
+
   list() {
-    return this.detailCommandeHttpService.findAll();
+    return this.cmdService.commandeEnCours?.detailCommandes;
   }
 
   edit(id?: number) {
-    this.detailCommandeHttpService.findById(id).subscribe((resp) => {
-      this.detailCommande = resp;
-    });
+    // this.detailCommandeHttpService.findById(id).subscribe((resp) => {
+    //   this.detailCommande = resp;
+    ;
   }
 
   add() {
-    this.ajout = true;
+    // this.ajout = true;
   }
 
   save() {
-    if (this.detailCommande) {
-      if (this.detailCommande?.id) {
-        this.detailCommandeHttpService.update(this.detailCommande);
-      } else {
-        this.detailCommandeHttpService.create(this.detailCommande);
-      }
-      this.detailCommande = undefined;
-    }
+    // if (this.detailCommande) {
+    //   if (this.detailCommande?.id) {
+    //     this.detailCommandeHttpService.update(this.detailCommande);
+    //   } else {
+    //     this.detailCommandeHttpService.create(this.detailCommande);
+    //   }
+    //   this.detailCommande = undefined;
+    // }
   }
 
   cancel() {
-    this.detailCommande = undefined;
+   // this.detailCommande = undefined;
   }
 
   remove(id?: number) {
-    this.detailCommandeHttpService.delete(id);
+   // this.detailCommandeHttpService.delete(id);
   }
 }

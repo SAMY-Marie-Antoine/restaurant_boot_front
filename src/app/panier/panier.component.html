@@ -1,1 +1,16 @@
-<p>panier works!</p>
+<table class="table table-striped">
+    <thead>
+        <th>Article</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let d of list()">
+            <td *ngIf="d.produit">{{d.produit.libelle}}</td>
+            <td *ngIf="d.menu"><span *ngFor="let item of d.menu.produits">{{item.libelle}}</span></td>
+            <td>{{d.qte}}</td>
+            <td>{{d.prix}}</td>
+        </tr>
+    </tbody>
+</table>
