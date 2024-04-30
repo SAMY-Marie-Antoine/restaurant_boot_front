@@ -4,11 +4,14 @@ import { AjouterProduitComponent } from './ajouter-produit/ajouter-produit.compo
 import { ProduitComponent } from './produit/produit.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { DetailCommande } from './model';
 
 const routes: Routes = [
   { path: 'ajouterProduit', component: AjouterProduitComponent },
   { path: 'produit', component: ProduitComponent },
   { path: 'produit/:mode', component: ProduitComponent },
+  { path: 'detailCommande', component: DetailCommande },
+  { path: 'detailCommande/:mode', component: DetailCommande },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
 ];

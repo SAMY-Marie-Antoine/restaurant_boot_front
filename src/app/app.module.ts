@@ -8,9 +8,10 @@ import { AjouterProduitComponent } from './ajouter-produit/ajouter-produit.compo
 import { ProduitComponent } from './produit/produit.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
-  declarations: [AppComponent, AjouterProduitComponent, ProduitComponent, LoginComponent, SignUpComponent],
+  declarations: [AppComponent, AjouterProduitComponent, ProduitComponent, LoginComponent, SignUpComponent, PanierComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
