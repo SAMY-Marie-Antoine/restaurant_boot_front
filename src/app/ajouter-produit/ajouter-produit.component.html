@@ -50,7 +50,7 @@
       <div class="mb-3 mt-3">
         <label for="dansFormule" class="form-label">Dans Formule:</label>
         <input
-          type="boolean"
+          type="checkbox"
           class="form-control"
           id="dansFormule"
           name="dansFormule"
@@ -64,13 +64,12 @@
       </div>
       <div class="mb-3 mt-3">
         <label for="type" class="form-label">Type produit:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="type"
-          name="type"
-          formControlName="type"
-        />
+        <select formControlName="type">
+          <option [ngValue]="null" disabled>Select type</option>
+          <option *ngFor="let type of types" [ngValue]="type.id">
+            {{ type.name }}
+          </option>
+        </select>
 
         <span
           class="text-danger"
@@ -81,7 +80,7 @@
       <div class="mb-3 mt-3">
         <label for="allergieOeuf" class="form-label">Allergie Oeuf:</label>
         <input
-          type="boolean"
+          type="checkbox"
           class="form-control"
           id="allergieOeuf"
           name="allergieOeuf"
@@ -98,7 +97,7 @@
       <div class="mb-3 mt-3">
         <label for="allergieGluten" class="form-label">Allergie Gluten:</label>
         <input
-          type="boolean"
+          type="checkbox"
           class="form-control"
           id="allergieGluten"
           name="allergieGluten"
@@ -117,7 +116,7 @@
           >Allergie Arachide:</label
         >
         <input
-          type="boolean"
+          type="checkbox"
           class="form-control"
           id="allergieArachide"
           name="allergieArachide"
@@ -135,7 +134,7 @@
       <div class="mb-3 mt-3">
         <label for="allergieLait" class="form-label">Allergie Lait:</label>
         <input
-          type="boolean"
+          type="checkbox"
           class="form-control"
           id="allergieLait"
           name="allergieLait"
@@ -152,7 +151,7 @@
       <div class="mb-3 mt-3">
         <label for="allergieSoja" class="form-label">Allergie Soja:</label>
         <input
-          type="boolean"
+          type="checkbox"
           class="form-control"
           id="allergieSoja"
           name="allergieSoja"
@@ -169,7 +168,7 @@
       <div class="mb-3 mt-3">
         <label for="hallal" class="form-label">Hallal:</label>
         <input
-          type="boolean"
+          type="checkbox"
           class="form-control"
           id="hallal"
           name="hallal"
@@ -184,7 +183,7 @@
       <div class="mb-3 mt-3">
         <label for="vegan" class="form-label">Vegan:</label>
         <input
-          type="boolean"
+          type="checkbox"
           class="form-control"
           id="vegan"
           name="vegan"

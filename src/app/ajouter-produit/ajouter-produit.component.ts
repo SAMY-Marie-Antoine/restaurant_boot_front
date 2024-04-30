@@ -15,6 +15,12 @@ import { Produit } from '../model';
   styleUrl: './ajouter-produit.component.css',
 })
 export class AjouterProduitComponent {
+  types = [
+    { id: 1, name: 'Entree' },
+    { id: 2, name: 'Plat' },
+    { id: 3, name: 'Dessert' },
+    { id: 4, name: 'Boisson' },
+  ];
   ajoutProduitForm!: FormGroup;
   libelleCtrl!: FormControl;
   prixCtrl!: FormControl;
@@ -39,46 +45,26 @@ export class AjouterProduitComponent {
     this.libelleCtrl = this.formBuilder.control('', Validators.required);
     this.prixCtrl = this.formBuilder.control('', Validators.required);
     this.stockCtrl = this.formBuilder.control('', [Validators.required]);
-    this.dansFormuleCtrl = this.formBuilder.control('', [
-      Validators.required,
-      Validators.maxLength(5),
-    ]);
+    this.dansFormuleCtrl = this.formBuilder.control('', [Validators.required]);
     this.typeCtrl = this.formBuilder.control('', [Validators.required]);
-    this.allergieOeufCtrl = this.formBuilder.control('', [
-      Validators.required,
-      Validators.maxLength(5),
-    ]);
+    this.allergieOeufCtrl = this.formBuilder.control('', [Validators.required]);
     this.allergieGlutenCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.maxLength(5),
     ]);
     this.allergieArachideCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.maxLength(5),
     ]);
-    this.allergieLaitCtrl = this.formBuilder.control('', [
-      Validators.required,
-      Validators.maxLength(5),
-    ]);
-    this.allergieSojaCtrl = this.formBuilder.control('', [
-      Validators.required,
-      Validators.maxLength(5),
-    ]);
-    this.hallalCtrl = this.formBuilder.control('', [
-      Validators.required,
-      Validators.maxLength(5),
-    ]);
-    this.veganCtrl = this.formBuilder.control('', [
-      Validators.required,
-      Validators.maxLength(5),
-    ]);
+    this.allergieLaitCtrl = this.formBuilder.control('', [Validators.required]);
+    this.allergieSojaCtrl = this.formBuilder.control('', [Validators.required]);
+    this.hallalCtrl = this.formBuilder.control('', [Validators.required]);
+    this.veganCtrl = this.formBuilder.control('', [Validators.required]);
 
     this.ajoutProduitForm = this.formBuilder.group({
       libelle: this.libelleCtrl,
       prix: this.prixCtrl,
       stock: this.stockCtrl,
       dansFormule: this.dansFormuleCtrl,
-      typeProduit: this.typeCtrl,
+      type: this.typeCtrl,
       allergieOeuf: this.allergieOeufCtrl,
       allergieGluten: this.allergieGlutenCtrl,
       allergieArachide: this.allergieArachideCtrl,
