@@ -15,6 +15,7 @@ import { Produit } from '../model';
   styleUrl: './ajouter-produit.component.css',
 })
 export class AjouterProduitComponent {
+  isChecked = false;
   types = [
     { id: 1, name: 'Entree' },
     { id: 2, name: 'Plat' },
