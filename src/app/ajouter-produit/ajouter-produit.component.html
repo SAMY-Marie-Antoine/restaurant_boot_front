@@ -1,4 +1,4 @@
-<div class="card mt-3">
+<div class="form-group form-check" class="card mt-3">
   <form [formGroup]="ajoutProduitForm" (ngSubmit)="ajoutProduit()">
     <div class="card-header text-white bg-primary">Ajouter Produit</div>
     <div class="card-body">
@@ -48,10 +48,10 @@
         >
       </div>
       <div class="mb-3 mt-3">
-        <label for="dansFormule" class="form-label">Dans Formule:</label>
+        <label for="dansFormule" class="form-check-label">Dans Formule:</label>
         <input
           type="checkbox"
-          class="form-control"
+          class="form-check-input"
           id="dansFormule"
           name="dansFormule"
           formControlName="dansFormule"
@@ -78,10 +78,12 @@
         >
       </div>
       <div class="mb-3 mt-3">
-        <label for="allergieOeuf" class="form-label">Allergie Oeuf:</label>
+        <label for="allergieOeuf" class="form-check-label"
+          >Allergie Oeuf:</label
+        >
         <input
           type="checkbox"
-          class="form-control"
+          class="form-check-input"
           id="allergieOeuf"
           name="allergieOeuf"
           formControlName="allergieOeuf"
@@ -95,10 +97,12 @@
         >
       </div>
       <div class="mb-3 mt-3">
-        <label for="allergieGluten" class="form-label">Allergie Gluten:</label>
+        <label for="allergieGluten" class="form-check-label"
+          >Allergie Gluten:</label
+        >
         <input
           type="checkbox"
-          class="form-control"
+          class="form-check-input"
           id="allergieGluten"
           name="allergieGluten"
           formControlName="allergieGluten"
@@ -112,12 +116,12 @@
         >
       </div>
       <div class="mb-3 mt-3">
-        <label for="allergieArachide" class="form-label"
+        <label for="allergieArachide" class="form-check-label"
           >Allergie Arachide:</label
         >
         <input
           type="checkbox"
-          class="form-control"
+          class="form-check-input"
           id="allergieArachide"
           name="allergieArachide"
           formControlName="allergieArachide"
@@ -132,10 +136,12 @@
         >
       </div>
       <div class="mb-3 mt-3">
-        <label for="allergieLait" class="form-label">Allergie Lait:</label>
+        <label for="allergieLait" class="form-check-label"
+          >Allergie Lait:</label
+        >
         <input
           type="checkbox"
-          class="form-control"
+          class="form-check-input"
           id="allergieLait"
           name="allergieLait"
           formControlName="allergieLait"
@@ -149,10 +155,12 @@
         >
       </div>
       <div class="mb-3 mt-3">
-        <label for="allergieSoja" class="form-label">Allergie Soja:</label>
+        <label for="allergieSoja" class="form-check-label"
+          >Allergie Soja:</label
+        >
         <input
           type="checkbox"
-          class="form-control"
+          class="form-check-input"
           id="allergieSoja"
           name="allergieSoja"
           formControlName="allergieSoja"
@@ -166,10 +174,10 @@
         >
       </div>
       <div class="mb-3 mt-3">
-        <label for="hallal" class="form-label">Hallal:</label>
+        <label for="hallal" class="form-check-label">Hallal:</label>
         <input
           type="checkbox"
-          class="form-control"
+          class="form-check-input"
           id="hallal"
           name="hallal"
           formControlName="hallal"
@@ -181,10 +189,10 @@
         >
       </div>
       <div class="mb-3 mt-3">
-        <label for="vegan" class="form-label">Vegan:</label>
+        <label for="vegan" class="form-check-label">Vegan:</label>
         <input
           type="checkbox"
-          class="form-control"
+          class="form-check-input"
           id="vegan"
           name="vegan"
           formControlName="vegan"
