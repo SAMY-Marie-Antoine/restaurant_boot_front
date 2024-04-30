@@ -20,7 +20,7 @@ export class AjouterProduitComponent {
   prixCtrl!: FormControl;
   stockCtrl!: FormControl;
   dansFormuleCtrl!: FormControl;
-  typeProduitCtrl!: FormControl;
+  typeCtrl!: FormControl;
   allergieOeufCtrl!: FormControl;
   allergieGlutenCtrl!: FormControl;
   allergieArachideCtrl!: FormControl;
@@ -38,41 +38,39 @@ export class AjouterProduitComponent {
   ngOnInit(): void {
     this.libelleCtrl = this.formBuilder.control('', Validators.required);
     this.prixCtrl = this.formBuilder.control('', Validators.required);
-    this.stockCtrl = this.formBuilder.control('', [
-      Validators.required,
-      Validators.minLength(4),
-    ]);
+    this.stockCtrl = this.formBuilder.control('', [Validators.required]);
     this.dansFormuleCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.maxLength(5),
     ]);
+    this.typeCtrl = this.formBuilder.control('', [Validators.required]);
     this.allergieOeufCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.maxLength(5),
     ]);
     this.allergieGlutenCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.maxLength(5),
     ]);
     this.allergieArachideCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.maxLength(5),
     ]);
     this.allergieLaitCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.maxLength(5),
     ]);
     this.allergieSojaCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.maxLength(5),
     ]);
     this.hallalCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.maxLength(5),
     ]);
     this.veganCtrl = this.formBuilder.control('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.maxLength(5),
     ]);
 
     this.ajoutProduitForm = this.formBuilder.group({
@@ -80,7 +78,7 @@ export class AjouterProduitComponent {
       prix: this.prixCtrl,
       stock: this.stockCtrl,
       dansFormule: this.dansFormuleCtrl,
-      typeProduit: this.typeProduitCtrl,
+      typeProduit: this.typeCtrl,
       allergieOeuf: this.allergieOeufCtrl,
       allergieGluten: this.allergieGlutenCtrl,
       allergieArachide: this.allergieArachideCtrl,
@@ -94,6 +92,6 @@ export class AjouterProduitComponent {
   ajoutProduit() {
     this.produitHttpService
       .inscription(this.ajoutProduitForm.value)
-      .subscribe(() => this.router.navigate(['/produit']));
+      .subscribe(() => this.router.navigate(['/produit', 'add']));
   }
 }

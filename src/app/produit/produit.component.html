@@ -54,7 +54,7 @@
         </button>
       </td>
     </tr>
-    <tr *ngIf="ajoutProduitForm">
+    <tr>
       <td>
         <div class="btn-group">
           <button (click)="save()" class="btn btn-success">
@@ -68,3 +68,4 @@
     </tr>
   </tfoot>
 </table>
+<app-ajouter-produit *ngIf="ajout"></app-ajouter-produit>

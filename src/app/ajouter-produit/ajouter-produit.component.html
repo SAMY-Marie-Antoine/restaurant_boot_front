@@ -63,25 +63,18 @@
         >
       </div>
       <div class="mb-3 mt-3">
-        <label for="typeProduit" class="form-label">Type produit:</label>
+        <label for="type" class="form-label">Type produit:</label>
         <input
           type="text"
           class="form-control"
-          id="typeProduit"
-          name="typeProduit"
-          formControlName="typeProduit"
+          id="type"
+          name="type"
+          formControlName="type"
         />
-        <!--td>
-        <div [ngSwitch]="val">
-          <p *ngSwitchCase="enum.entree">entree</p>
-          <p *ngSwitchCase="enum.plat">plat</p>
-          <p *ngSwitchCase="enum.dessert">dessert</p>
-          <p *ngSwitchCase="enum.boisson">boisson</p>
-        </div>
-      </td-->
+
         <span
           class="text-danger"
-          *ngIf="typeProduitCtrl.dirty && typeProduitCtrl.hasError('required')"
+          *ngIf="typeCtrl.dirty && typeCtrl.hasError('required')"
           >Le type produit est obligatoire</span
         >
       </div>

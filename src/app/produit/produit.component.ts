@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Produit } from '../model';
 import { ProduitHttpService } from '../produit/produit-http.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-produit',
@@ -9,8 +10,18 @@ import { ProduitHttpService } from '../produit/produit-http.service';
 })
 export class ProduitComponent {
   ajoutProduitForm?: Produit = undefined;
+  ajout: boolean = false;
 
-  constructor(private produitHttpService: ProduitHttpService) {}
+  constructor(
+    private produitHttpService: ProduitHttpService,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe((params) => {
+      if (params['mode'] == 'add') {
+        this.ajoutProduitForm = new Produit();
+      }
+    });
+  }
   list() {
     return this.produitHttpService.findAll();
   }
@@ -22,7 +33,7 @@ export class ProduitComponent {
   }
 
   add() {
-    this.ajoutProduitForm = new Produit();
+    this.ajout = true;
   }
 
   save() {

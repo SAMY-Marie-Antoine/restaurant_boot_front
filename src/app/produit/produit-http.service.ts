@@ -55,7 +55,7 @@ export class ProduitHttpService {
 
   inscription(inscriptionProduit: any): Observable<Produit> {
     return this.http.post<Produit>(
-      environment.apiUrl + '/produit/inscription',
+      environment.apiUrl + '/produit',
       inscriptionProduit
     );
   }

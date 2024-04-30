@@ -22,7 +22,7 @@ export class Produit {
   public prix?: number;
   public stock?: number;
   public dansFormule?: boolean;
-  enum: typeof typeProduit = typeProduit;
+  public type?: string;
   public allergieOeuf?: boolean;
   public allergieGluten?: boolean;
   public allergieArachide?: boolean;
@@ -37,6 +37,7 @@ export class Produit {
     prix?: number,
     stock?: number,
     dansFormule?: boolean,
+    type?: string,
     allergieOeuf?: boolean,
     allergieGluten?: boolean,
     allergieArachide?: boolean,
@@ -50,6 +51,7 @@ export class Produit {
     this.prix = prix;
     this.stock = stock;
     this.dansFormule = dansFormule;
+    this.type = type;
     this.allergieOeuf = allergieOeuf;
     this.allergieGluten = allergieGluten;
     this.allergieArachide = allergieArachide;
@@ -58,10 +60,4 @@ export class Produit {
     this.hallal = hallal;
     this.vegan = vegan;
   }
-}
-enum typeProduit {
-  entree,
-  plat,
-  dessert,
-  boisson,
 }
