@@ -1,0 +1,217 @@
+<div class="card mt-3">
+  <form [formGroup]="ajoutProduitForm" (ngSubmit)="ajoutProduit()">
+    <div class="card-header text-white bg-primary">Ajouter Produit</div>
+    <div class="card-body">
+      <div class="mb-3 mt-3">
+        <label for="libelle" class="form-label">Libelle:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="libelle"
+          name="libelle"
+          formControlName="libelle"
+        />
+        <span
+          class="text-danger"
+          *ngIf="libelleCtrl.dirty && libelleCtrl.hasError('required')"
+          >Le Libelle est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="prix" class="form-label">Prix:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="prix"
+          name="prix"
+          formControlName="prix"
+        />
+        <span
+          class="text-danger"
+          *ngIf="prixCtrl.dirty && prixCtrl.hasError('required')"
+          >Le prix est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="stock" class="form-label">Stock:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="stock"
+          name="stock"
+          formControlName="stock"
+        />
+        <span
+          class="text-danger"
+          *ngIf="stockCtrl.dirty && stockCtrl.hasError('required')"
+          >Le stock est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="dansFormule" class="form-label">Dans Formule:</label>
+        <input
+          type="boolean"
+          class="form-control"
+          id="dansFormule"
+          name="dansFormule"
+          formControlName="dansFormule"
+        />
+        <span
+          class="text-danger"
+          *ngIf="dansFormuleCtrl.dirty && dansFormuleCtrl.hasError('required')"
+          >La saisie dans formule est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="typeProduit" class="form-label">Type produit:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="typeProduit"
+          name="typeProduit"
+          formControlName="typeProduit"
+        />
+        <!--td>
+        <div [ngSwitch]="val">
+          <p *ngSwitchCase="enum.entree">entree</p>
+          <p *ngSwitchCase="enum.plat">plat</p>
+          <p *ngSwitchCase="enum.dessert">dessert</p>
+          <p *ngSwitchCase="enum.boisson">boisson</p>
+        </div>
+      </td-->
+        <span
+          class="text-danger"
+          *ngIf="typeProduitCtrl.dirty && typeProduitCtrl.hasError('required')"
+          >Le type produit est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="allergieOeuf" class="form-label">Allergie Oeuf:</label>
+        <input
+          type="boolean"
+          class="form-control"
+          id="allergieOeuf"
+          name="allergieOeuf"
+          formControlName="allergieOeuf"
+        />
+        <span
+          class="text-danger"
+          *ngIf="
+            allergieOeufCtrl.dirty && allergieOeufCtrl.hasError('required')
+          "
+          >La saisie allergie oeuf est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="allergieGluten" class="form-label">Allergie Gluten:</label>
+        <input
+          type="boolean"
+          class="form-control"
+          id="allergieGluten"
+          name="allergieGluten"
+          formControlName="allergieGluten"
+        />
+        <span
+          class="text-danger"
+          *ngIf="
+            allergieGlutenCtrl.dirty && allergieGlutenCtrl.hasError('required')
+          "
+          >La saisie allergie gluten est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="allergieArachide" class="form-label"
+          >Allergie Arachide:</label
+        >
+        <input
+          type="boolean"
+          class="form-control"
+          id="allergieArachide"
+          name="allergieArachide"
+          formControlName="allergieArachide"
+        />
+        <span
+          class="text-danger"
+          *ngIf="
+            allergieArachideCtrl.dirty &&
+            allergieArachideCtrl.hasError('required')
+          "
+          >La saisie allergie arachide est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="allergieLait" class="form-label">Allergie Lait:</label>
+        <input
+          type="boolean"
+          class="form-control"
+          id="allergieLait"
+          name="allergieLait"
+          formControlName="allergieLait"
+        />
+        <span
+          class="text-danger"
+          *ngIf="
+            allergieLaitCtrl.dirty && allergieLaitCtrl.hasError('required')
+          "
+          >La saisie allergie lait est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="allergieSoja" class="form-label">Allergie Soja:</label>
+        <input
+          type="boolean"
+          class="form-control"
+          id="allergieSoja"
+          name="allergieSoja"
+          formControlName="allergieSoja"
+        />
+        <span
+          class="text-danger"
+          *ngIf="
+            allergieSojaCtrl.dirty && allergieSojaCtrl.hasError('required')
+          "
+          >La saisie allergie soja est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="hallal" class="form-label">Hallal:</label>
+        <input
+          type="boolean"
+          class="form-control"
+          id="hallal"
+          name="hallal"
+          formControlName="hallal"
+        />
+        <span
+          class="text-danger"
+          *ngIf="hallalCtrl.dirty && hallalCtrl.hasError('required')"
+          >La saisie hallal est obligatoire</span
+        >
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="vegan" class="form-label">Vegan:</label>
+        <input
+          type="boolean"
+          class="form-control"
+          id="vegan"
+          name="vegan"
+          formControlName="vegan"
+        />
+        <span
+          class="text-danger"
+          *ngIf="veganCtrl.dirty && veganCtrl.hasError('required')"
+          >La saisie vegan est obligatoire</span
+        >
+      </div>
+    </div>
+    <div class="card-footer">
+      <button
+        type="submit"
+        [disabled]="ajoutProduitForm.invalid"
+        class="btn btn-success btn-lg"
+      >
+        <i class="bi bi-check-lg"></i>
+      </button>
+    </div>
+  </form>
+</div>

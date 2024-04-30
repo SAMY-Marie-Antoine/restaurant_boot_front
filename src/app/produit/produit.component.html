@@ -1,0 +1,70 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Identifiant</th>
+      <th>Prix</th>
+      <th>Stock</th>
+      <th>Dans Formule</th>
+      <th>Type produit</th>
+      <th>Allergie Oeuf</th>
+      <th>Allergie Gluten</th>
+      <th>Allergie Arachide</th>
+      <th>Allergie Oeuf</th>
+      <th>Allergie Oeuf</th>
+      <th>Allergie Lait</th>
+      <th>Allergie Soja</th>
+      <th>Hallal</th>
+      <th>Vegan</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let p of list()">
+      <td>{{ p.id }}</td>
+      <td>{{ p.prix }}</td>
+      <td>{{ p.stock }}</td>
+      <td>{{ p.dansFormule }}</td>
+      <!--td>{{ p.enum.typeProduit }}</td-->
+      <td>Type Produit</td>
+      <td>{{ p.allergieOeuf }}</td>
+      <td>{{ p.allergieGluten }}</td>
+      <td>{{ p.allergieArachide }}</td>
+      <td>{{ p.allergieLait }}</td>
+      <td>{{ p.allergieSoja }}</td>
+      <td>{{ p.hallal }}</td>
+      <td>{{ p.vegan }}</td>
+      <td>
+        <div class="btn-group btn-group-sm">
+          <button (click)="edit(p.id)" class="btn btn-primary">
+            <i class="bi bi-pen"></i>
+          </button>
+          <button (click)="remove(p.id)" class="btn btn-danger">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="7">
+        <button (click)="add()" class="btn btn-lg btn-success">
+          <i class="bi bi-plus"></i>
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="ajoutProduitForm">
+      <td>
+        <div class="btn-group">
+          <button (click)="save()" class="btn btn-success">
+            <i class="bi bi-check-lg"></i>
+          </button>
+          <button (click)="cancel()" class="btn btn-warning">
+            <i class="bi bi-backspace"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tfoot>
+</table>
