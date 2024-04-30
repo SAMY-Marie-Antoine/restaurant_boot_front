@@ -64,15 +64,45 @@ export class Utilisateur {
 }
 
 export class Formule {
-  public id?:number;
-  public libelle?:string;
-  public prix?:number;
-  public typeProduits?:Array<string>;
+  public id?: number;
+  public libelle?: string;
+  public prix?: number;
+  public typeProduits?: Array<string>;
 
-  constructor(id?:number,libelle?:string,prix?:number,typeProduits?:Array<string>){
+  constructor(
+    id?: number,
+    libelle?: string,
+    prix?: number,
+    typeProduits?: Array<string>
+  ) {
     this.id = id;
     this.libelle = libelle;
     this.prix = prix;
     this.typeProduits = typeProduits;
+  }
+}
+
+export class DetailCommande {
+  public id?: number;
+  public prix?: number;
+  public qte?: number;
+  public commande?: Commande;
+  public produit?: Produit;
+  public menu?: Menu;
+
+  constructor(
+    id?: number,
+    prix?: number,
+    qte?: number,
+    commande?: Commande,
+    produit?: Produit,
+    menu?: Menu
+  ) {
+    this.id = id;
+    this.prix = prix;
+    this.qte = qte;
+    this.commande = new Commande();
+    this.produit = new Produit();
+    this.menu = new Menu();
   }
 }
