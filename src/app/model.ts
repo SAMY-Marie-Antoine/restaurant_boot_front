@@ -62,3 +62,17 @@ export class Utilisateur {
     this.gestionnaire = gestionnaire;
   }
 }
+
+export class Formule {
+  public id?:number;
+  public libelle?:string;
+  public prix?:number;
+  public typeProduits?:Array<string>;
+
+  constructor(id?:number,libelle?:string,prix?:number,typeProduits?:Array<string>){
+    this.id = id;
+    this.libelle = libelle;
+    this.prix = prix;
+    this.typeProduits = typeProduits;
+  }
+}
