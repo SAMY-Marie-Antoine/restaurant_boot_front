@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class FormuleHttpService {
 
-  private formules?: Array<Formule>;
+  private formules: Array<Formule> = new Array<Formule>();
 
   constructor(private http: HttpClient) {
     this.load()
@@ -19,7 +19,7 @@ export class FormuleHttpService {
     this.http.get<Formule[]>(environment.apiUrl + "/formule").subscribe(resp => this.formules = resp)
   }
 
-  findAll(){
+  findAll():Formule[]{
     return this.formules;
   }
 
@@ -28,14 +28,20 @@ export class FormuleHttpService {
   }
 
   insert(formule : Formule){
-    this.http.post<Formule>(environment.apiUrl+'/formule/',formule);
+    this.http.post<Formule>(environment.apiUrl+'/formule/',formule).subscribe((resp)=>{
+      this.load();
+    });
   }
 
   update(formule : Formule){
-    this.http.put<Formule>(environment.apiUrl+'/formule/'+formule.id,formule);
+    this.http.put<Formule>(environment.apiUrl+'/formule/'+formule.id,formule).subscribe((resp)=>{
+      this.load();
+    });
   }
 
-  delete(formule : Formule){
-    this.http.delete(environment.apiUrl+'/formule/'+formule.id);
+  delete(id? : number){
+    this.http.delete(environment.apiUrl+'/formule/'+id).subscribe((resp)=>{
+      this.load();
+    });
   }
 }

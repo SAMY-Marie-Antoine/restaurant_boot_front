@@ -9,6 +9,7 @@ import { DebutCommandeComponent } from './debut-commande/debut-commande.componen
 import { CommandeProduitComponent } from './commande-produit/commande-produit.component';
 import { CompositionMenuComponent } from './composition-menu/composition-menu.component';
 import { PanierComponent } from './panier/panier.component';
+import { FormuleComponent } from './formule/formule.component';
 
 const routes: Routes = [
   { path: 'ajouterProduit', component: AjouterProduitComponent },
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: 'choixproduit', component: CommandeProduitComponent },
   { path: 'choixformule', component: CompositionMenuComponent },
   { path: 'panier', component: PanierComponent },
+  { path: 'formule', component: FormuleComponent },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
