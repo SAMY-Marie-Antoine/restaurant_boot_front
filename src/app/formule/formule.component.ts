@@ -10,12 +10,7 @@ import { Formule } from '../model';
 })
 export class FormuleComponent {
   ajoutFormuleForm?: Formule = undefined;
-  types = [
-    { id: 1, name: 'Entree' },
-    { id: 2, name: 'Plat' },
-    { id: 3, name: 'Dessert' },
-    { id: 4, name: 'Boisson' },
-  ];
+ 
   //ajoutformule: boolean = false;
   constructor(
     private formuleHttpService: FormuleHttpService,
