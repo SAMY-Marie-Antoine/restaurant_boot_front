@@ -13,9 +13,20 @@ import { CommandeProduitComponent } from './commande-produit/commande-produit.co
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DebutCommandeComponent } from './debut-commande/debut-commande.component';
 import { CompositionMenuComponent } from './composition-menu/composition-menu.component';
+import { DansFormulePipePipe } from './dans-formule-pipe.pipe';
 
 @NgModule({
-  declarations: [AppComponent, AjouterProduitComponent, ProduitComponent, LoginComponent, SignUpComponent, CommandeProduitComponent, NavBarComponent, DebutCommandeComponent, PanierComponent, CompositionMenuComponent],
+  declarations: [AppComponent,
+     AjouterProduitComponent,
+      ProduitComponent,
+       LoginComponent,
+        SignUpComponent,
+         CommandeProduitComponent,
+          NavBarComponent,
+           DebutCommandeComponent,
+            PanierComponent,
+             CompositionMenuComponent,
+             DansFormulePipePipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
