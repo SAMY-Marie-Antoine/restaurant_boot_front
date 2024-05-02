@@ -12,7 +12,7 @@ import { PanierComponent } from './panier/panier.component';
 import { FormuleComponent } from './formule/formule.component';
 
 const routes: Routes = [
-  { path: 'ajouterProduit', component: AjouterProduitComponent },
+  //{ path: 'ajouterProduit', component: AjouterProduitComponent },
   { path: 'produit', component: ProduitComponent },
   { path: 'produit/:mode', component: ProduitComponent },
   { path: 'detailCommande', component: DetailCommande },
@@ -25,7 +25,6 @@ const routes: Routes = [
   { path: 'panier', component: PanierComponent },
   { path: 'formule', component: FormuleComponent },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
