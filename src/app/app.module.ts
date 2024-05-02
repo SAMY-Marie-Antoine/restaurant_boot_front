@@ -15,6 +15,8 @@ import { DebutCommandeComponent } from './debut-commande/debut-commande.componen
 import { CompositionMenuComponent } from './composition-menu/composition-menu.component';
 import { DansFormulePipePipe } from './dans-formule-pipe.pipe';
 import { FormuleComponent } from './formule/formule.component';
+import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { FormuleComponent } from './formule/formule.component';
     CompositionMenuComponent,
     FormuleComponent,
     DansFormulePipePipe,
+    HomeComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

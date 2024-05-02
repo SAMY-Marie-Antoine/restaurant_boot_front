@@ -2,29 +2,26 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-nav-bar',
+  selector: 'nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.css'
+  styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent {
-  constructor(private authService: AuthService){
-
-  }
-  isLogged(): boolean{
+  constructor(private authService: AuthService) {}
+  isLogged(): boolean {
     return this.authService.isLogged();
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
   }
 
-  showUtilisateur(): string | undefined{
+  showUtilisateur(): string | undefined {
     const utilisateur = this.authService.getUtilisateur();
-    if(utilisateur){
-      return  utilisateur.username;
+    if (utilisateur) {
+      return utilisateur.username;
     }
 
-    return "";
+    return '';
   }
-
 }
