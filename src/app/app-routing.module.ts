@@ -10,9 +10,13 @@ import { CommandeProduitComponent } from './commande-produit/commande-produit.co
 import { CompositionMenuComponent } from './composition-menu/composition-menu.component';
 import { PanierComponent } from './panier/panier.component';
 import { FormuleComponent } from './formule/formule.component';
+import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
   //{ path: 'ajouterProduit', component: AjouterProduitComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'menu', component: MenuComponent },
   { path: 'produit', component: ProduitComponent },
   { path: 'produit/:mode', component: ProduitComponent },
   { path: 'detailCommande', component: DetailCommande },

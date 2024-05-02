@@ -98,9 +98,9 @@
             />
           </td>
           <td>
-            <select [(ngModel)]="types">
+            <select [(ngModel)]="ajoutProduitForm.type">
               <option [ngValue]="null" disabled>Select type</option>
-              <option *ngFor="let type of types" [ngValue]="type.id">
+              <option *ngFor="let type of types" [ngValue]="type.name">
                 {{ type.name }}
               </option>
             </select>
