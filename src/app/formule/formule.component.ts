@@ -15,7 +15,10 @@ export class FormuleComponent {
     { id: 2, name: 'Plat' },
     { id: 3, name: 'Dessert' },
     { id: 4, name: 'Boisson' },
-  ];
+
+
+
+    ];// TEST mIREILLE
 
   //ajoutformule: boolean = false;
   constructor(
