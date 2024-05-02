@@ -1,70 +1,174 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Identifiant</th>
-      <th>Prix</th>
-      <th>Stock</th>
-      <th>Dans Formule</th>
-      <th>Type produit</th>
-      <th>Allergie Oeuf</th>
-      <th>Allergie Gluten</th>
-      <th>Allergie Arachide</th>
-      <th>Allergie Oeuf</th>
-      <th>Allergie Oeuf</th>
-      <th>Allergie Lait</th>
-      <th>Allergie Soja</th>
-      <th>Hallal</th>
-      <th>Vegan</th>
-    </tr>
-  </thead>
+<fieldset>
+  <div class="card-header text-white bg-primary">Liste des produits</div>
+  <div class="card-body">
+    <table class="table table-hover table-bordered table-sm">
+      <thead>
+        <tr class="table-primary">
+          <th>Identifiant</th>
+          <th>Libelle</th>
+          <th>Prix</th>
+          <th>Stock</th>
+          <th>Dans Formule</th>
+          <th>Type produit</th>
+          <th>Allergie Oeuf</th>
+          <th>Allergie Gluten</th>
+          <th>Allergie Arachide</th>
+          <th>Allergie Lait</th>
+          <th>Allergie Oeuf</th>
+          <th>Allergie Soja</th>
+          <th>Hallal</th>
+          <th>Vegan</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <tr *ngFor="let p of list()">
-      <td>{{ p.id }}</td>
-      <td>{{ p.prix }}</td>
-      <td>{{ p.stock }}</td>
-      <td>{{ p.dansFormule }}</td>
-      <td>{{ p.type }}</td>
-      <td>{{ p.allergieOeuf }}</td>
-      <td>{{ p.allergieGluten }}</td>
-      <td>{{ p.allergieArachide }}</td>
-      <td>{{ p.allergieLait }}</td>
-      <td>{{ p.allergieSoja }}</td>
-      <td>{{ p.hallal }}</td>
-      <td>{{ p.vegan }}</td>
-      <td>
-        <div class="btn-group btn-group-sm">
-          <button (click)="edit(p.id)" class="btn btn-primary">
-            <i class="bi bi-pen"></i>
-          </button>
-          <button (click)="remove(p.id)" class="btn btn-danger">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-  </tbody>
+      <tbody>
+        <tr *ngFor="let p of list()">
+          <td>{{ p.id }}</td>
+          <td>{{ p.libelle }}</td>
+          <td>{{ p.prix }}</td>
+          <td>{{ p.stock }}</td>
+          <td>{{ p.dansFormule }}</td>
+          <td>{{ p.type }}</td>
+          <td>{{ p.allergieOeuf }}</td>
+          <td>{{ p.allergieGluten }}</td>
+          <td>{{ p.allergieArachide }}</td>
+          <td>{{ p.allergieLait }}</td>
+          <td>{{ p.allergieSoja }}</td>
+          <td>{{ p.hallal }}</td>
+          <td>{{ p.vegan }}</td>
+          <td></td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button (click)="edit(p.id)" class="btn btn-primary">
+                <i class="bi bi-pen"></i>
+              </button>
+              <button (click)="remove(p.id)" class="btn btn-danger">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
 
-  <tfoot>
-    <tr>
-      <td colspan="7">
-        <button (click)="add()" class="btn btn-lg btn-success">
-          <i class="bi bi-plus"></i>
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="btn-group">
-          <button (click)="save()" class="btn btn-success">
-            <i class="bi bi-check-lg"></i>
-          </button>
-          <button (click)="cancel()" class="btn btn-warning">
-            <i class="bi bi-backspace"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-  </tfoot>
-</table>
-<app-ajouter-produit *ngIf="ajout"></app-ajouter-produit>
+      <tfoot>
+        <tr>
+          <td colspan="17">
+            <button (click)="add()" class="btn btn-lg btn-success">
+              <i class="bi bi-plus"></i>
+            </button>
+          </td>
+        </tr>
+
+        <tr *ngIf="ajoutProduitForm">
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="ajoutProduitForm.id"
+              class="form-control"
+              readonly
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="ajoutProduitForm.libelle"
+              class="form-control"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="ajoutProduitForm.prix"
+              class="form-control"
+            />
+          </td>
+
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="ajoutProduitForm.stock"
+              class="form-check-input"
+            />
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="ajoutProduitForm.dansFormule"
+              class="form-check-input"
+            />
+          </td>
+          <td>
+            <select [(ngModel)]="types">
+              <option [ngValue]="null" disabled>Select type</option>
+              <option *ngFor="let type of types" [ngValue]="type.id">
+                {{ type.name }}
+              </option>
+            </select>
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="ajoutProduitForm.allergieOeuf"
+              class="form-check-input"
+            />
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="ajoutProduitForm.allergieGluten"
+              class="form-check-input"
+            />
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="ajoutProduitForm.allergieArachide"
+              class="form-check-input"
+            />
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="ajoutProduitForm.allergieLait"
+              class="form-check-input"
+            />
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="ajoutProduitForm.allergieSoja"
+              class="form-check-input"
+            />
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="ajoutProduitForm.hallal"
+              class="form-check-input"
+            />
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="ajoutProduitForm.vegan"
+              class="form-check-input"
+            />
+          </td>
+          <td></td>
+          <td>
+            <div class="btn-group">
+              <button (click)="save()" class="btn btn-success">
+                <i class="bi bi-check-lg"></i>
+              </button>
+              <button (click)="cancel()" class="btn btn-warning">
+                <i class="bi bi-backspace"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</fieldset>
+
+<!--app-ajouter-produit *ngIf="ajout"></app-ajouter-produit-->

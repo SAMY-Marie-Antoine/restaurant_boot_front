@@ -52,7 +52,6 @@ export class ProduitHttpService {
         this.load();
       });
   }
-
   inscription(inscriptionProduit: any): Observable<Produit> {
     return this.http.post<Produit>(
       environment.apiUrl + '/produit',

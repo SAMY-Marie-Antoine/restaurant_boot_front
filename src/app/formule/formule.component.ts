@@ -6,19 +6,22 @@ import { Formule } from '../model';
 @Component({
   selector: 'app-formule',
   templateUrl: './formule.component.html',
-  styleUrl: './formule.component.css'
+  styleUrl: './formule.component.css',
 })
 export class FormuleComponent {
   ajoutFormuleForm?: Formule = undefined;
- 
+  types = [
+    { id: 1, name: 'Entree' },
+    { id: 2, name: 'Plat' },
+    { id: 3, name: 'Dessert' },
+    { id: 4, name: 'Boisson' },
+  ];
+
   //ajoutformule: boolean = false;
   constructor(
     private formuleHttpService: FormuleHttpService,
     private route: ActivatedRoute
-  ) {
-   
-    
-  }
+  ) {}
   list() {
     return this.formuleHttpService.findAll();
   }
@@ -30,8 +33,8 @@ export class FormuleComponent {
   }
 
   add() {
-   //this.ajoutformule = true;
-   this.ajoutFormuleForm = new Formule();
+    //this.ajoutformule = true;
+    this.ajoutFormuleForm = new Formule();
   }
 
   save() {
@@ -50,9 +53,6 @@ export class FormuleComponent {
   }
 
   remove(id?: number) {
-   this.formuleHttpService.delete(id);
-   
-}
-
-
+    this.formuleHttpService.delete(id);
+  }
 }

@@ -16,7 +16,19 @@ import { CompositionMenuComponent } from './composition-menu/composition-menu.co
 import { FormuleComponent } from './formule/formule.component';
 
 @NgModule({
-  declarations: [AppComponent, AjouterProduitComponent, ProduitComponent, LoginComponent, SignUpComponent, CommandeProduitComponent, NavBarComponent, DebutCommandeComponent, PanierComponent, CompositionMenuComponent ,FormuleComponent],
+  declarations: [
+    AppComponent,
+    AjouterProduitComponent,
+    ProduitComponent,
+    LoginComponent,
+    SignUpComponent,
+    CommandeProduitComponent,
+    NavBarComponent,
+    DebutCommandeComponent,
+    PanierComponent,
+    CompositionMenuComponent,
+    FormuleComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
