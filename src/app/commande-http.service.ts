@@ -46,8 +46,14 @@ export class CommandeHttpService {
   }
 
   save(){
-    this.http.post<Commande>(environment.apiUrl+'/commande/',this.commandeEnCours);
-    this.startNewCommande();
+    return this.http.post<Commande>(environment.apiUrl+'/commande/',
+    {"client": this.commandeEnCours?.client,
+    }
+  )
+  }
+
+  resetCommandeEncours(){
+    this.commandeEnCours = undefined;
   }
 
   findAll(){
@@ -59,7 +65,7 @@ export class CommandeHttpService {
   }
 
   insert(commande : Commande){
-    this.http.post<Commande>(environment.apiUrl+'/commande/',commande);
+    this.http.post<Commande>(environment.apiUrl+'/commande/',commande)
   }
 
   update(commande : Commande){

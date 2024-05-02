@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { DetailCommandeService } from '../detail-commande.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DetailCommande } from '../model';
+import { Commande, DetailCommande, Menu } from '../model';
 import { CommandeHttpService } from '../commande-http.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-panier',
@@ -13,7 +15,7 @@ export class PanierComponent {
   detailCommande?: DetailCommande = undefined;
   ajout: boolean = false;
 
-  constructor(private cmdService: CommandeHttpService, private router :  Router) {
+  constructor(private cmdService: CommandeHttpService, private router :  Router, private http : HttpClient) {
    
   }
 
@@ -32,7 +34,49 @@ export class PanierComponent {
   }
 
   save() {
-    this.cmdService.save();
+    this.cmdService.save().subscribe(
+      resp =>
+        { 
+          let id = resp.id;
+        if(id){
+          this.cmdService.commandeEnCours?.detailCommandes?.forEach(
+            d => {
+              d.commande = new Commande();
+              d.commande.id = id; 
+              if(d.menu)
+                {
+                  this.http.post<Menu>(environment.apiUrl+"/menus",d.menu).subscribe(
+                    recu => {
+                      if(d.menu)
+                        {
+                          console.log(d.menu);
+                          d.menu.id = recu.id;
+                        }
+                      }
+                  );
+                  this.http.post(environment.apiUrl+"/detailCommande",{
+                    "prix": d.total,
+                    "qte": d.qte,
+                    "commande": d.commande.id,
+                    "produit": null,
+                    "menu": d.menu
+                  }).subscribe();
+                }
+              else if (d.produit)
+              {
+                this.http.post(environment.apiUrl+"/detailCommande",d).subscribe();
+              }
+            }
+          );
+        }
+        }
+    );
+    this.cmdService.resetCommandeEncours();
+    this.router.navigate(["/"])
+  }
+
+  reset(){
+    this.cmdService.resetCommandeEncours();
   }
 
   cancel() {

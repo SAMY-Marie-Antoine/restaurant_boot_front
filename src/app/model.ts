@@ -91,6 +91,7 @@ export class DetailCommande {
   public commande?:Commande;
   public produit?: Produit;
   public menu?: Menu;
+  public total! : number;
 
   constructor(id? : number, prix?: number, qte?:number, commande?:Commande, produit?:Produit, menu?:Menu){
     this.id = id;
@@ -99,6 +100,12 @@ export class DetailCommande {
     this.commande = commande;
     this.produit = produit;
     this.menu = menu;
+    if(prix && qte){
+    this.total = prix * qte;
+    }
+    else{
+      this.total = 0;
+    }
   }
 }
 

@@ -35,6 +35,11 @@ export class ProduitHttpService {
     return this.produits;
   }
 
+  findAllObs() : Observable<Produit[]> {
+    return this.http
+      .get<Produit[]>('http://localhost:8080/api/produit');
+  }
+
   findAllByType(type : string) : Observable<Produit[]> {
     return this.http.get<Produit[]>(environment.apiUrl + '/produit/bytype/' + type)
   }
