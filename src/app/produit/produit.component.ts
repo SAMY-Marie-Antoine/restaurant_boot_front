@@ -10,20 +10,13 @@ import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
   styleUrl: './produit.component.css',
 })
 export class ProduitComponent {
-  /*types = [
-    { id: 1, name: 'entree' },
-    { id: 2, name: 'plat' },
-    { id: 3, name: 'dessert' },
-    { id: 4, name: 'boisson' },
-  ];*/
-
   public types: Array<any> = [
     { id: [0], name: 'entree' },
     { id: [1], name: 'plat' },
     { id: [2], name: 'dessert' },
     { id: [3], name: 'boisson' },
   ];
-  /*types = ['entree', 'plat', 'dessert', 'boisson'];*/
+
   ajoutProduitForm?: Produit = undefined;
   //ajout: boolean = false;
 
