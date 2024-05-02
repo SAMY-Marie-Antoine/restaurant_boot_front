@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import { Utilisateur } from '../model';
+import { environment } from '../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sign-up',
@@ -15,7 +18,7 @@ export class SignUpComponent {
   passwordCtrl!: FormControl;
   passwordConfirmCtrl! : FormControl;
 
-  constructor(private formBuilder: FormBuilder, private http : HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http : HttpClient, private router : Router) {
     this.usernameCtrl = this.formBuilder.control("", Validators.required);
     this.passwordCtrl = this.formBuilder.control("", [Validators.required,Validators.pattern(/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/)]);
     this.passwordConfirmCtrl = this.formBuilder.control("", [Validators.required,confirmPasswordValidator(this)]);
@@ -28,7 +31,7 @@ export class SignUpComponent {
   }
 
   inscription() {
-    //this.http.
+    this.http.post(environment.apiUrl + "/clients",{username : this.usernameCtrl.value, password : this.passwordCtrl.value}).subscribe(()=> this.router.navigate(["/"]));
   }
 }
 

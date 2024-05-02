@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Utilisateur } from '../model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from './environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,10 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   login(username:string, password:string){
-    //this.http.
-    //.subscribe(resp => {this.utilisateur = resp; this.router.navigate([?"])})
+    this.http.get<Utilisateur>(environment.apiUrl+"/clients").subscribe(resp => {this.utilisateur = resp; this.router.navigate(["/"])})
+    if(this.utilisateur){
+      this.utilisateur.gestionnaire = false;
+    }
   }
 
   logout(){
@@ -26,9 +29,9 @@ export class AuthService {
   }
 
   isGestionnaire(): boolean {
-    if(this.utilisateur && this.utilisateur.gestionnaire){
-      return true;
-    }
+    // if(this.utilisateur && this.utilisateur.gestionnaire){
+    //   return true;
+    // }
     return false;
   }
 
