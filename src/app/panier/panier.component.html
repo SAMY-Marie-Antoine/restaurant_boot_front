@@ -8,9 +8,13 @@
     <tbody>
         <tr *ngFor="let d of list()">
             <td *ngIf="d.produit">{{d.produit.libelle}}</td>
-            <td *ngIf="d.menu"><span *ngFor="let item of d.menu.produits">{{item.libelle}}</span></td>
+            <td *ngIf="d.menu">
+                <div style="font-weight: bold;">Formule : {{d.menu.formule?.libelle}}</div>
+                <br><div *ngFor="let item of d.menu.produits">{{item.libelle}}</div></td>
             <td>{{d.qte}}</td>
             <td>{{d.prix}}</td>
         </tr>
     </tbody>
 </table>
+
+<button class="btn btn-primary" (click)="save()">Valider la commande</button>

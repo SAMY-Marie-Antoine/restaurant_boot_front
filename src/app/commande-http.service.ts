@@ -45,6 +45,11 @@ export class CommandeHttpService {
     }
   }
 
+  save(){
+    this.http.post<Commande>(environment.apiUrl+'/commande/',this.commandeEnCours);
+    this.startNewCommande();
+  }
+
   findAll(){
     return this.commandes;
   }
