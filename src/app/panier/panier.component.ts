@@ -37,6 +37,7 @@ export class PanierComponent {
     this.cmdService.save().subscribe(
       resp =>
         { 
+          console.log(resp.id);
           let id = resp.id;
         if(id){
           this.cmdService.commandeEnCours?.detailCommandes?.forEach(
@@ -49,30 +50,29 @@ export class PanierComponent {
                     recu => {
                       if(d.menu)
                         {
-                          console.log(d.menu);
                           d.menu.id = recu.id;
                         }
                       }
                   );
-                  this.http.post(environment.apiUrl+"/detailCommande",{
-                    "prix": d.total,
-                    "qte": d.qte,
-                    "commande": d.commande.id,
-                    "produit": null,
-                    "menu": d.menu
-                  }).subscribe();
+                  this.http.post(environment.apiUrl+"/detailCommande",d).subscribe();
                 }
               else if (d.produit)
               {
                 this.http.post(environment.apiUrl+"/detailCommande",d).subscribe();
               }
             }
-          );
+             );
+             this.reset();
         }
         }
     );
-    this.cmdService.resetCommandeEncours();
     this.router.navigate(["/"])
+  }
+
+  totalCmd(){
+    let total: number = 0;
+    this.cmdService.commandeEnCours?.detailCommandes?.forEach(d => total = total+d.total)
+    return total;
   }
 
   reset(){

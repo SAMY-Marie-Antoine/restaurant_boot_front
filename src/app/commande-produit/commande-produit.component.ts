@@ -28,7 +28,7 @@ export class CommandeProduitComponent {
       this.produits.forEach(
         x => {
           if(x.id){
-            this.produitsForm.addControl("a"+x.id,this.formBuilder.control(""));
+            this.produitsForm.addControl("a"+x.id,this.formBuilder.control(0));
           }
         });
     });

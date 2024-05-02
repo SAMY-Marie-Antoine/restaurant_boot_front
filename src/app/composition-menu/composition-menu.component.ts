@@ -98,6 +98,6 @@ export class CompositionMenuComponent {
   let newMenu = new Menu(undefined,produitsChoisis,this.formuleChoisie);
   let newDetailCommande = new DetailCommande(undefined,newMenu.formule?.prix,this.qteCtrl.value,this.cmdSrv.commandeEnCours,undefined,newMenu);
   this.cmdSrv.addToCommandeEnCours(newDetailCommande);
-  this.router.navigate(["/commande"]);
+  this.router.navigate(["/panier"]);
   }
 }

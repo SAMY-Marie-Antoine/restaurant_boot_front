@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DebutCommandeComponent {
 
   constructor(private cmdService : CommandeHttpService, private router : Router){
-    if(!cmdService.commandeEnCours){
+    if(cmdService.commandeEnCours == undefined){
       cmdService.startNewCommande();
     }
   }

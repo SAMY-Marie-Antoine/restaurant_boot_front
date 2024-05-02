@@ -48,8 +48,7 @@ export class CommandeHttpService {
   save(){
     return this.http.post<Commande>(environment.apiUrl+'/commande/',
     {"client": this.commandeEnCours?.client,
-    }
-  )
+    })
   }
 
   resetCommandeEncours(){
