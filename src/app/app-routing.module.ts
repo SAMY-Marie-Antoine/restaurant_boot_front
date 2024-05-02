@@ -13,8 +13,6 @@ import { FormuleComponent } from './formule/formule.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { HistoriqueComponent } from './historique/historique.component';
-import { InscriptionComponent } from './inscription/inscription.component';
-import { ConnexionComponent } from './connexion/connexion.component';
 
 const routes: Routes = [
   //{ path: 'ajouterProduit', component: AjouterProduitComponent },
@@ -32,8 +30,6 @@ const routes: Routes = [
   { path: 'panier', component: PanierComponent },
   { path: 'formule', component: FormuleComponent },
   { path: 'historique', component: HistoriqueComponent },
-  { path: 'inscription', component: InscriptionComponent },
-  { path: 'connexion', component: ConnexionComponent },
 ];
 
 @NgModule({
