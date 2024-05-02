@@ -32,14 +32,7 @@ export class PanierComponent {
   }
 
   save() {
-    // if (this.detailCommande) {
-    //   if (this.detailCommande?.id) {
-    //     this.detailCommandeHttpService.update(this.detailCommande);
-    //   } else {
-    //     this.detailCommandeHttpService.create(this.detailCommande);
-    //   }
-    //   this.detailCommande = undefined;
-    // }
+    this.cmdService.save();
   }
 
   cancel() {

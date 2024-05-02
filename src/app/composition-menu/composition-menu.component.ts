@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Formule } from '../model';
+import { DetailCommande, Formule, Menu } from '../model';
 import { Produit} from '../model';
 import { ProduitHttpService } from '../produit/produit-http.service';
 import { FormuleHttpService } from '../formule-http.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommandeHttpService } from '../commande-http.service';
 
 @Component({
   selector: 'composition-menu',
@@ -26,14 +27,20 @@ export class CompositionMenuComponent {
   platCtrl!: FormControl;
   dessertCtrl! : FormControl;
   boissonCtrl!: FormControl;
+  qteCtrl! : FormControl;
 
-  constructor(private produitSrv : ProduitHttpService, private formuleSrv : FormuleHttpService, private router: Router, private formBuilder : FormBuilder)
+  constructor(private produitSrv : ProduitHttpService, 
+    private formuleSrv : FormuleHttpService, 
+    private router: Router,
+    private formBuilder : FormBuilder,
+    private cmdSrv : CommandeHttpService)
   {
     this.formuleCtrl = this.formBuilder.control("",Validators.required);
     this.entreeCtrl = this.formBuilder.control("");
     this.platCtrl = this.formBuilder.control("");
     this.dessertCtrl = this.formBuilder.control("");
     this.boissonCtrl = this.formBuilder.control("");
+    this.qteCtrl = this.formBuilder.control(1,Validators.required);
 
     this.composeMenuForm = this.formBuilder.group({
       formule: this.formuleCtrl,
@@ -41,9 +48,10 @@ export class CompositionMenuComponent {
       plat: this.platCtrl,
       dessert: this.dessertCtrl,
       boisson: this.boissonCtrl,
+      qte : this.qteCtrl
     });
 
-    this.formuleCtrl.valueChanges.subscribe(resp => this.selectFormule());
+    this.formuleCtrl.valueChanges.subscribe(resp => {     this.selectFormule();});
   }
 
   list(){
@@ -82,7 +90,14 @@ export class CompositionMenuComponent {
   }
 
   save(){
-  //Creer un objet detailCommande
-  //L'ajouter avec CommandeSrv
+  let produitsChoisis = new Array<Produit>();
+  if(this.entree){produitsChoisis.push(this.entreeCtrl.value);}
+  if(this.plat){produitsChoisis.push(this.platCtrl.value);}
+  if(this.dessert){produitsChoisis.push(this.dessertCtrl.value);}
+  if(this.boisson){produitsChoisis.push(this.boissonCtrl.value);}
+  let newMenu = new Menu(undefined,produitsChoisis,this.formuleChoisie);
+  let newDetailCommande = new DetailCommande(undefined,newMenu.formule?.prix,this.qteCtrl.value,this.cmdSrv.commandeEnCours,undefined,newMenu);
+  this.cmdSrv.addToCommandeEnCours(newDetailCommande);
+  this.router.navigate(["/commande"]);
   }
 }
