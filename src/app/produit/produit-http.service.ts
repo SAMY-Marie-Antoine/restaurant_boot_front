@@ -10,9 +10,19 @@ import { environment } from '../environments/environment';
 export class ProduitHttpService {
   private produits: Array<Produit> = new Array<Produit>();
 
+  public entrees$?: Observable<Array<Produit>>;
+  public plats$?:Observable<Array<Produit>>;
+  public desserts$?:Observable<Array<Produit>>;
+  public boissons$?:Observable<Array<Produit>>;
+
   constructor(private http: HttpClient) {
     this.load();
+    this.entrees$ = this.findAllByType("entree");
+    this.plats$ = this.findAllByType("plat");
+    this.desserts$ = this.findAllByType("dessert");
+    this.boissons$ = this.findAllByType("boisson");
   }
+
   load() {
     this.http
       .get<Produit[]>('http://localhost:8080/api/produit')
@@ -23,6 +33,26 @@ export class ProduitHttpService {
 
   findAll(): Produit[] {
     return this.produits;
+  }
+
+  findAllByType(type : string) : Observable<Produit[]> {
+    return this.http.get<Produit[]>(environment.apiUrl + '/produit/bytype/' + type)
+  }
+
+  findEntrees(){
+    return this.entrees$;
+  }
+
+  findPlats(){
+    return this.plats$;
+  }
+
+  findDesserts(){
+    return this.desserts$;
+  }
+
+  findBoissons(){
+    return this.boissons$;
   }
 
   findById(id?: number): Observable<Produit> {

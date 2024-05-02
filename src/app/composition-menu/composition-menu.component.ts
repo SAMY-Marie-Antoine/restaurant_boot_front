@@ -4,6 +4,7 @@ import { Produit} from '../model';
 import { ProduitHttpService } from '../produit/produit-http.service';
 import { FormuleHttpService } from '../formule-http.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'composition-menu',
@@ -19,17 +20,42 @@ export class CompositionMenuComponent {
   public dessert:boolean = false;
   public boisson:boolean = false;
 
-  constructor(private produitSrv : ProduitHttpService, private formuleSrv : FormuleHttpService, private router: Router){
+  composeMenuForm!: FormGroup;
+  formuleCtrl!: FormControl;
+  entreeCtrl!: FormControl;
+  platCtrl!: FormControl;
+  dessertCtrl! : FormControl;
+  boissonCtrl!: FormControl;
+
+  constructor(private produitSrv : ProduitHttpService, private formuleSrv : FormuleHttpService, private router: Router, private formBuilder : FormBuilder)
+  {
+    this.formuleCtrl = this.formBuilder.control("",Validators.required);
+    this.entreeCtrl = this.formBuilder.control("");
+    this.platCtrl = this.formBuilder.control("");
+    this.dessertCtrl = this.formBuilder.control("");
+    this.boissonCtrl = this.formBuilder.control("");
+
+    this.composeMenuForm = this.formBuilder.group({
+      formule: this.formuleCtrl,
+      entree: this.entreeCtrl,
+      plat: this.platCtrl,
+      dessert: this.dessertCtrl,
+      boisson: this.boissonCtrl,
+    });
+
+    this.formuleCtrl.valueChanges.subscribe(resp => this.selectFormule());
   }
 
   list(){
     return this.formuleSrv.findAll();
   }
 
-  selectFormule(formule : Formule){
-    this.formuleChoisie = formule;
+  selectFormule(){
+    this.formuleChoisie = this.formuleCtrl.value;
     this.composition = true;
+    this.checkProduitsConcernes();
   }
+
   checkProduitsConcernes(){
     if(this.formuleChoisie && this.formuleChoisie.typeProduits){
       this.entree = this.formuleChoisie.typeProduits.includes("entree");
@@ -37,8 +63,22 @@ export class CompositionMenuComponent {
       this.dessert = this.formuleChoisie.typeProduits.includes("dessert");
       this.boisson = this.formuleChoisie.typeProduits.includes("boisson");
     }
-   
-    //this.produits.filter(prod => prod.dansFormule && prod)
+  }
+
+  listEntreeFormule(){
+    return this.produitSrv.findEntrees();
+  }
+
+  listPlatFormule(){
+    return this.produitSrv.findPlats();
+  }
+
+  listDessertFormule(){
+    return this.produitSrv.findDesserts();
+  }
+
+  listBoissonFormule(){
+    return this.produitSrv.findBoissons();
   }
 
   save(){
