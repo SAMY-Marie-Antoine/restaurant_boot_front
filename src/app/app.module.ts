@@ -17,6 +17,9 @@ import { DansFormulePipePipe } from './dans-formule-pipe.pipe';
 import { FormuleComponent } from './formule/formule.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { HistoriqueComponent } from './historique/historique.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { MenuComponent } from './menu/menu.component';
     DansFormulePipePipe,
     HomeComponent,
     MenuComponent,
+    HistoriqueComponent,
+    InscriptionComponent,
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,

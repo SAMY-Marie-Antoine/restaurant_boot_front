@@ -1,45 +1,70 @@
 <ul class="nav nav-pills mt-3">
-    <li class="nav-item" >
-        <a class="nav-link" [routerLink]="['/accueil']" routerLinkActive="active">Accueil</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link"  [routerLink]="['/menu']" routerLinkActive="active">Menu</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/connexion']" routerLinkActive="active">Connexion</a>
-       
-    </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"
+      >Accueil</a
+    >
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/menu']" routerLinkActive="active"
+      >Menu</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      *ngIf="!isLogged()"
+      [routerLink]="['/connexion']"
+      routerLinkActive="active"
+      >Connexion</a
+    >
+  </li>
 
-
-   <!-- <li class="nav-item">
+  <!-- <li class="nav-item">
         <a class="nav-link"  [routerLink]="['/accueil']" routerLinkActive="active">Accueil</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/menu']" routerLinkActive="active">Menu</a>
     </li>-->
-     
-     
-   <!-- <li class="nav-item">
+
+  <!-- <li class="nav-item">
         <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/menu']" routerLinkActive="active">Menu</a>
     </li>-->
-    <li class="nav-item">
-        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/commande']" routerLinkActive="active">Commande</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/historique']" routerLinkActive="active">Historique</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" *ngIf="!isLogged()" >Bienvenue <span>{{showUtilisateur()}}</span> </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/inscription']" routerLinkActive="active">Inscription</a>
-    </li>
-    <li class="nav-item" *ngIf="isLogged()">
-        <button class="nav-link" (click)="logout()">Deconnexion   <i class="bi bi-person"></i></button>
-       
-    </li>
-    <li class="nav-item">
-        
-    </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      *ngIf="!isLogged()"
+      [routerLink]="['/commande']"
+      routerLinkActive="active"
+      >Commande</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      *ngIf="!isLogged()"
+      [routerLink]="['/historique']"
+      routerLinkActive="active"
+      >Historique</a
+    >
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" *ngIf="!isLogged()"
+      >Bienvenue <span>{{ showUtilisateur() }}</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      *ngIf="!isLogged()"
+      [routerLink]="['/inscription']"
+      routerLinkActive="active"
+      >Inscription</a
+    >
+  </li>
+  <li class="nav-item" *ngIf="isLogged()">
+    <button class="nav-link" (click)="logout()">
+      Deconnexion <i class="bi bi-person"></i>
+    </button>
+  </li>
+  <li class="nav-item"></li>
 </ul>
-
