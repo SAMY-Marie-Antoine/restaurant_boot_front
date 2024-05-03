@@ -26,6 +26,5 @@ export class LoginComponent {
 
   connexion() {
     this.authService.login(this.usernameCtrl.value, this.passwordCtrl.value);
-    this.router.navigate(["/"]);
   }
 }

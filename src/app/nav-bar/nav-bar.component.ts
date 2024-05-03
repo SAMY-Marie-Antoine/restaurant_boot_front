@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent {
+
   constructor(private authService: AuthService, private router : Router) {}
+
   isLogged(): boolean {
     return this.authService.isLogged();
   }
@@ -23,12 +25,12 @@ export class NavBarComponent {
     return this.authService.isGestionnaire();
   }
 
-  showUtilisateur(): string | undefined {
-    let utilisateur = this.authService.getUtilisateur();
+  showUtilisateur() {
+    const utilisateur = this.authService.getUtilisateur();
+    console.log(this.authService.getUtilisateur());
     if (utilisateur) {
       return utilisateur.username;
     }
-
     return '';
   }
 }

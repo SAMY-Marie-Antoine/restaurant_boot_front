@@ -1,68 +1,71 @@
-<div>
-  <ul class="nav nav-pills mt-3">
-    <li class="nav-item">
-      <!--<img src="../assets/img/logo.png"  alt="logo restaurant"/>-->
-    </li>
+<div class="container d-flex justify-content-start">
+    <ul class="nav nav-pills mt-3">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">
+          Accueil
+        </a>
+      </li>
 
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"
-        >Accueil</a
-      >
-    </li>
+      <li class="nav-item">
+        <a  *ngIf="isLogged()" class="nav-link" [routerLink]="['/menu']" routerLinkActive="active">
+          Menu
+        </a>
+      </li>
 
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/menu']" routerLinkActive="active"
-        >Menu</a
-      >
-    </li>
-    <li class="nav-item">
-      <a
-        class="nav-link"
-        *ngIf="!isLogged()"
-        [routerLink]="['/login']"
-        routerLinkActive="active"
-        >Connexion</a
-      >
-    </li>
+      <li class="nav-item">
+        <a *ngIf="isLogged() && !isGestionnaire()" class="nav-link" [routerLink]="['/commande']" routerLinkActive="active">
+          Commande
+        </a>
+      </li>
 
+      <li class="nav-item">
+        <a *ngIf="isLogged() && !isGestionnaire()" class="nav-link" [routerLink]="['/panier']" routerLinkActive="active">
+        <i class="bi bi-cart"></i> Panier 
+        </a>
+      </li>
+      </ul>
+
+    <ul class="nav nav-pills mt-3">
     <li class="nav-item">
-      <a
-        class="nav-link"
-        *ngIf="!isLogged()"
-        [routerLink]="['/commande']"
-        routerLinkActive="active"
-        >Commande</a
-      >
-    </li>
-    <li class="nav-item">
-      <a
-        class="nav-link"
-        *ngIf="!isLogged()"
-        [routerLink]="['/historique']"
-        routerLinkActive="active"
-        >Historique</a
-      >
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" *ngIf="!isLogged()"
-        >Bienvenue <span>{{ showUtilisateur() }}</span>
+      <a class="nav-link" style="color:black;">
+        Bienvenue <span>{{ showUtilisateur() }}</span>
       </a>
     </li>
+
     <li class="nav-item">
-      <a
-        class="nav-link"
-        *ngIf="!isLogged()"
-        [routerLink]="['/signup']"
-        routerLinkActive="active"
-        >Inscription</a
-      >
+      <a *ngIf="!isLogged()" class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">
+        Inscription
+      </a>
     </li>
-    <li class="nav-item" *ngIf="isLogged()">
-      <button class="nav-link" (click)="logout()">
-        Deconnexion <i class="bi bi-person"></i>
+
+    <li class="nav-item">
+      <a *ngIf="!isLogged()" class="nav-link" [routerLink]="['/login']"  routerLinkActive="active">
+        <i class="bi bi-person"></i> Connexion
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="isLogged()" class="nav-link" [routerLink]="['/historique']" routerLinkActive="active">
+        Historique
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="isGestionnaire()" class="nav-link" [routerLink]="['/produit']" routerLinkActive="active">
+        Gestion produits
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="isGestionnaire()" class="nav-link" [routerLink]="['/formule']" routerLinkActive="active">
+        Gestion formules
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <button *ngIf="isLogged()" class="nav-link" (click)="logout()">
+        <i class="bi bi-person"></i> Deconnexion
       </button>
     </li>
-    <li class="nav-item"></li>
-    <li><i class="bi bi-cart"></i></li>
   </ul>
 </div>
