@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -13,17 +14,18 @@ export class LoginComponent {
   usernameCtrl!: FormControl;
   passwordCtrl!: FormControl;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router : Router) {
     this.usernameCtrl = this.formBuilder.control("", Validators.required);
     this.passwordCtrl = this.formBuilder.control("", Validators.required);
 
     this.loginForm = this.formBuilder.group({
       username: this.usernameCtrl,
-      password: this.passwordCtrl
+      password: this.passwordCtrl,
     });
   }
 
   connexion() {
     this.authService.login(this.usernameCtrl.value, this.passwordCtrl.value);
+    this.router.navigate(["/"]);
   }
 }

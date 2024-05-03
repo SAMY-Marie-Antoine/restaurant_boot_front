@@ -12,15 +12,14 @@
     >
   </li>
   
-  <li class="nav-item">
+  <li class="nav-item" *ngIf="isLogged() && !isGestionnaire()">
     <a class="nav-link" [routerLink]="['/menu']" routerLinkActive="active"
       >Menu</a
     >
   </li>
-  <li class="nav-item">
+  <li class="nav-item" *ngIf="!isLogged()" >
     <a
       class="nav-link"
-      *ngIf="!isLogged()"
       [routerLink]="['/login']"
       routerLinkActive="active"
       >Connexion</a
@@ -28,26 +27,41 @@
   </li>
 
  
-  <li class="nav-item">
+  <li class="nav-item" *ngIf="isLogged() && (!isGestionnaire())">
     <a
       class="nav-link"
-      *ngIf="!isLogged()"
       [routerLink]="['/commande']"
       routerLinkActive="active"
       >Commande</a
     >
   </li>
-  <li class="nav-item">
+  <li class="nav-item" *ngIf="isLogged() && isGestionnaire()">
     <a
       class="nav-link"
-      *ngIf="!isLogged()"
-      [routerLink]="['/historique']"
+      [routerLink]="['/produit']"
       routerLinkActive="active"
-      >Historique</a
+      >Gestion Produits</a
     >
   </li>
+
+  <li class="nav-item" *ngIf="isLogged() && isGestionnaire()">
+    <a
+      class="nav-link"
+      [routerLink]="['/formule']"
+      routerLinkActive="active"
+      >Gestion Formules</a
+    >
+  </li>
+
+  <li class="nav-item" *ngIf="!isGestionnaire() && isLogged()">
+    <a
+      class="nav-link"
+      [routerLink]="['/historique']"
+      routerLinkActive="active"
+      >Historique</a>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" *ngIf="!isLogged()"
+    <a class="fw-semibold" *ngIf="isLogged()"
       >Bienvenue <span>{{ showUtilisateur() }}</span>
     </a>
   </li>
@@ -65,7 +79,6 @@
       Deconnexion <i class="bi bi-person"></i>
     </button>
   </li>
-  <li class="nav-item"></li>
 </ul>
 
 </div>

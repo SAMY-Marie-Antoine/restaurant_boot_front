@@ -2,7 +2,7 @@
     <div class="card-body">
     <form [formGroup]="signUpForm" (ngSubmit)="inscription()">
         <div class="mb-3">
-          <label for="username" class="form-label">Choisir un identifiant</label>
+          <label for="username" class="form-label">Choisir un identifiant client</label>
           <input placeholder="identifiant" type="text" class="form-control" id="username" name="username" formControlName="username">
           <span class="text-danger" *ngIf="usernameCtrl.dirty && usernameCtrl.hasError('required')">L'identifiant est obligatoire</span>
         </div>
@@ -22,7 +22,7 @@
             <span class="text-danger" *ngIf="passwordConfirmCtrl.dirty && passwordConfirmCtrl.hasError('required')">La confirmation du mot de passe est obligatoire</span>
             <span class="text-danger" *ngIf="passwordConfirmCtrl.dirty && passwordConfirmCtrl.hasError('pwddiff')">Le mot de passe ne correspond pas</span>
           </div>
-        <button type="submit" class="btn btn-primary">S'inscrire</button>
+        <button type="submit" class="btn btn-primary">S'inscrire en tant que Client</button>
     </form>
     </div>
     </div>

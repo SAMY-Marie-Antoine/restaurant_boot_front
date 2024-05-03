@@ -10,14 +10,14 @@ import { environment } from './environments/environment';
 export class AuthService {
 
   private utilisateur?: Utilisateur = undefined;
+  private client? : boolean;
   
   constructor(private http: HttpClient, private router: Router) { }
 
   login(username:string, password:string){
-    this.http.get<Utilisateur>(environment.apiUrl+"/clients").subscribe(resp => {this.utilisateur = resp; this.router.navigate(["/"])})
-    if(this.utilisateur){
-      this.utilisateur.gestionnaire = false;
-    }
+    this.http.post<Utilisateur>(environment.apiUrl+"/clients/login",{"username" : username, "password" : password}).subscribe(
+        resp => {this.utilisateur = resp;}
+        );
   }
 
   logout(){
@@ -29,9 +29,9 @@ export class AuthService {
   }
 
   isGestionnaire(): boolean {
-    // if(this.utilisateur && this.utilisateur.gestionnaire){
-    //   return true;
-    // }
+    if(this.utilisateur?.gestionnaire){
+      return this.utilisateur.gestionnaire;
+    }
     return false;
   }
 

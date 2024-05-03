@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Utilisateur } from '../model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'nav-bar',
@@ -7,17 +9,22 @@ import { AuthService } from '../auth.service';
   styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router : Router) {}
   isLogged(): boolean {
     return this.authService.isLogged();
   }
 
   logout() {
     this.authService.logout();
+    this.router.navigate(["/"]);
+  }
+
+  isGestionnaire() : boolean{
+    return this.authService.isGestionnaire();
   }
 
   showUtilisateur(): string | undefined {
-    const utilisateur = this.authService.getUtilisateur();
+    let utilisateur = this.authService.getUtilisateur();
     if (utilisateur) {
       return utilisateur.username;
     }

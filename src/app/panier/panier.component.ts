@@ -51,10 +51,10 @@ export class PanierComponent {
                       if(d.menu)
                         {
                           d.menu.id = recu.id;
+                          this.http.post(environment.apiUrl+"/detailCommande",d).subscribe();
                         }
                       }
                   );
-                  this.http.post(environment.apiUrl+"/detailCommande",d).subscribe();
                 }
               else if (d.produit)
               {
