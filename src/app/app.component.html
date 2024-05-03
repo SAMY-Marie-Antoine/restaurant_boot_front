@@ -1,23 +1,35 @@
 <body>
-  <header>
-    <img id="img-header" src="../../assets/img/header.png" />
-    <nav-bar></nav-bar>
-  </header>
   <div class="container">
+    <header>
+      <!--img width="400" src="../../assets/img/header.png" /-->
+      <nav-bar></nav-bar>
+    </header>
     <main>
       <div class="card mt-3">
         <div class="card-body">
           <router-outlet></router-outlet>
         </div>
         <div class="text-center">
-          <img src="../../assets/img/menu.png" />
+          <!--img src="../../assets/img/menu.png" /-->
         </div>
       </div>
     </main>
   </div>
   <div>
-    <footer>
-      <img id="img-footer" src="../../assets/img/footer.png" />
-    </footer>
+    <blockquote class="blockquote">
+      <p class="mb-0">
+        Venez goûter les plats faits maison par des professionnels.
+      </p>
+      <footer class="blockquote-footer">
+        Spécilalités de la région !
+        <cite title="Source Title">Restaurant Parisien</cite>
+      </footer>
+      <div class="div">
+        <div class="image">
+          <img width="400" src="../../assets/img/footer.png" />
+        </div>
+      </div>
+      <!--img id="img-footer" src="../../assets/img/footer.png" /-->
+    </blockquote>
   </div>
 </body>
