@@ -1,25 +1,23 @@
-<div class="container">
-  
-  <header>  
-    
-    <nav-bar></nav-bar>  
-  
-     
+<body>
+  <header>
+    <img id="img-header" src="../../assets/img/header.png" />
+    <nav-bar></nav-bar>
   </header>
-
-  <div class="card mt-3">
-    <div class="card-body">
-      <router-outlet></router-outlet>
-    </div>
+  <div class="container">
+    <main>
+      <div class="card mt-3">
+        <div class="card-body">
+          <router-outlet></router-outlet>
+        </div>
+        <div class="text-center">
+          <img src="../../assets/img/menu.png" />
+        </div>
+      </div>
+    </main>
   </div>
-</div>
-
-
-<br/>
-<br/>
-<br/>
-
-<div><footer>
-  <img id="img-footer"src="../../assets/img/footer.png"/>
-  </footer></div>
-
+  <div>
+    <footer>
+      <img id="img-footer" src="../../assets/img/footer.png" />
+    </footer>
+  </div>
+</body>
