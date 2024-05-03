@@ -10,18 +10,18 @@ import { environment } from './environments/environment';
 export class AuthService {
 
   private utilisateur?: Utilisateur = undefined;
-  private client? : boolean;
   
   constructor(private http: HttpClient, private router: Router) { }
 
   login(username:string, password:string){
     this.http.post<Utilisateur>(environment.apiUrl+"/clients/login",{"username" : username, "password" : password}).subscribe(
-        resp => {this.utilisateur = resp;}
+        resp => {this.utilisateur = resp; this.router.navigate(["/"]);}
         );
   }
 
   logout(){
     this.utilisateur = undefined;
+    this.router.navigate(["/"]);
   }
 
   isLogged(): boolean {
@@ -35,11 +35,10 @@ export class AuthService {
     return false;
   }
 
-  getUtilisateur() : Utilisateur | undefined{
+  getUtilisateur(){
     if(this.utilisateur) {
       return this.utilisateur;
     }
-
     return undefined;
   }
 }
