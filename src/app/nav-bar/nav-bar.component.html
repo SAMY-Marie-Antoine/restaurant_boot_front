@@ -13,13 +13,13 @@
       </li>
 
       <li class="nav-item">
-        <a *ngIf="isLogged()" class="nav-link" [routerLink]="['/commande']" routerLinkActive="active">
+        <a *ngIf="isLogged() && !isGestionnaire()" class="nav-link" [routerLink]="['/commande']" routerLinkActive="active">
           Commande
         </a>
       </li>
 
       <li class="nav-item">
-        <a *ngIf="isLogged()" class="nav-link" [routerLink]="['/panier']" routerLinkActive="active">
+        <a *ngIf="isLogged() && !isGestionnaire()" class="nav-link" [routerLink]="['/panier']" routerLinkActive="active">
         <i class="bi bi-cart"></i> Panier 
         </a>
       </li>
@@ -27,7 +27,7 @@
 
     <ul class="nav nav-pills mt-3">
     <li class="nav-item">
-      <a class="badge text-bg-info">
+      <a class="nav-link" style="color:black;">
         Bienvenue <span>{{ showUtilisateur() }}</span>
       </a>
     </li>

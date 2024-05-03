@@ -15,7 +15,6 @@ import { MenuComponent } from './menu/menu.component';
 import { HistoriqueComponent } from './historique/historique.component';
 
 const routes: Routes = [
-  //{ path: 'ajouterProduit', component: AjouterProduitComponent },
   { path: 'home', component: HomeComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'produit', component: ProduitComponent },
