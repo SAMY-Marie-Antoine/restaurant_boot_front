@@ -18,9 +18,7 @@ export class FormuleComponent {
 
 
 
-    ];// TEST mIREILLE
-
-  //ajoutformule: boolean = false;
+    ];
   constructor(
     private formuleHttpService: FormuleHttpService,
     private route: ActivatedRoute

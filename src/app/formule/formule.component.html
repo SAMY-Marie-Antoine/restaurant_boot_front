@@ -37,7 +37,7 @@
             <i class="bi bi-plus"></i>
           </button>
         </td>
-       <!--rajout formulaire edition-->
+     
         <tr *ngIf="ajoutFormuleForm">
           <td><input type="number" class="form-control" readonly [(ngModel)]="ajoutFormuleForm.id"/></td>
           <td><input type="text" class="form-control" [(ngModel)]="ajoutFormuleForm.libelle"/></td>
@@ -48,97 +48,11 @@
               {{ type.name }}
             </option>
           </select></td>
-          <td><div class="btn-group">
+        <td><div class="btn-group">
               <button (click)="save()" class="btn btn-success"><i class="bi bi-check-lg"></i></button>
               <button (click)="cancel()" class="btn btn-warning"><i class="bi bi-backspace"></i></button>
           </div></td>
       </tr>
+    </tfoot>
 
-
-
-  <tbody>
-    <tr *ngFor="let f of list()">
-      <td>{{ f.id }}</td>
-      <td>{{ f.libelle }}</td>
-      <td>{{ f.prix }}</td>
-      <td>{{ f.typeProduits }}</td>
-      <td>
-        <div class="btn-group btn-group-sm">
-          <button (click)="edit(f.id)" class="btn btn-primary">
-            <i class="bi bi-pen"></i>
-          </button>
-          <button (click)="remove(f.id)" class="btn btn-danger">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-
-  <tfoot>
-    <tr>
-      <td colspan="7">
-        <button (click)="add()" class="btn btn-lg btn-success">
-          <i class="bi bi-plus"></i>
-        </button>
-      </td>
-      <!--rajout formulaire edition-->
-    </tr>
-
-    <tr *ngIf="ajoutFormuleForm">
-      <td>
-        <input
-          type="number"
-          class="form-control"
-          readonly
-          [(ngModel)]="ajoutFormuleForm.id"
-        />
-      </td>
-      <td>
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="ajoutFormuleForm.libelle"
-        />
-      </td>
-      <td>
-        <input
-          type="number"
-          class="form-control"
-          [(ngModel)]="ajoutFormuleForm.prix"
-        />
-      </td>
-      <td>
-        <select name="type">
-          <option [ngValue]="null" disabled>Select type</option>
-          <option *ngFor="let type of types" [ngValue]="type.id">
-            {{ type.name }}
-          </option>
-        </select>
-      </td>
-      <td>
-        <div class="btn-group">
-          <button (click)="save()" class="btn btn-success">
-            <i class="bi bi-check-lg"></i>
-          </button>
-          <button (click)="cancel()" class="btn btn-warning">
-            <i class="bi bi-backspace"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <div class="btn-group">
-          <button (click)="save()" class="btn btn-success">
-            <i class="bi bi-check-lg"></i>
-          </button>
-          <button (click)="cancel()" class="btn btn-warning">
-            <i class="bi bi-backspace"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-  </tfoot>
 </table>
